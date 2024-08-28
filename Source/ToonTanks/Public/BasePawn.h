@@ -20,7 +20,8 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	class UCapsuleCOmponent * CapsuleComp;
+	UPROPERTY()
+	class UCapsuleComponent * CapsuleComp;
 
 public:	
 	// Called every frame
