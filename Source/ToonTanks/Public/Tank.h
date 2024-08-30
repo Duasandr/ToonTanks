@@ -34,6 +34,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;	// forward declaration
+
+	UPROPERTY()
+	APlayerController* PlayerControllerRef;
 	
 	void Move(float Value);
 	void Turn(float Value);
