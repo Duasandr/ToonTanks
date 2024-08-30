@@ -22,6 +22,9 @@ public:
 	void Move(float Value);
 	
 private:
+	UPROPERTY(EditAnywhere, BluperintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	float MovementSpeed = 200.0f;
+	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;	// forward declaration
 
