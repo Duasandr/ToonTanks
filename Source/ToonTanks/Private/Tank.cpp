@@ -15,3 +15,10 @@ ATank::ATank()
 	SpringArm->SetupAttachment(RootComponent);
 	Camera	 ->SetupAttachment(SpringArm);
 }
+
+void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
+}
