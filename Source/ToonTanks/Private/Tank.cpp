@@ -41,6 +41,6 @@ void ATank::Turn(float Value)
 	double const YawOffset = Value * DeltaTime * TurnRate;
 
 	constexpr bool bSweep = true;
-	FRotator const DeltaRotation(YawOffset, 0.0, 0.0);
+	FRotator const DeltaRotation(0.0, YawOffset, 0.0);
 	AddActorLocalRotation(DeltaRotation, bSweep);
 }
