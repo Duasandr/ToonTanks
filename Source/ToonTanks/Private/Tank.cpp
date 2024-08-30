@@ -13,5 +13,5 @@ ATank::ATank()
 
 	// set up attachments
 	SpringArm->SetupAttachment(RootComponent);
-	Camera->SetupAttachment(SpringArm);
+	Camera	 ->SetupAttachment(SpringArm);
 }
