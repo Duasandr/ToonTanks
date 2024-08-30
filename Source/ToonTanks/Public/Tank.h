@@ -15,6 +15,11 @@ class TOONTANKS_API ATank : public ABasePawn
 	GENERATED_BODY()
 public:
 	ATank();
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+
+	void Move(float Value);
 	
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
