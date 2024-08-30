@@ -19,13 +19,15 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
-	void Move(float Value);
-	
 private:
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float MovementSpeed = 200.0f;
+	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;	// forward declaration
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;	// forward declaration
 	
+	void Move(float Value);	
 };
