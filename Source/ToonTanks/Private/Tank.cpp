@@ -22,3 +22,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 }
+
+void ATank::Move(float Value)
+{
+	UE_LOG(LogTemp, Warning, TEXT("%f"), Value);	
+}
