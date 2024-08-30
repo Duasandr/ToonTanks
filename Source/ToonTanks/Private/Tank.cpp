@@ -29,6 +29,7 @@ void ATank::Move(float Value)
 	double  const DeltaTime = UGameplayStatics::GetWorldDeltaSeconds(this);
 	double  const XOffset   = Value * DeltaTime * MovementSpeed;
 
+	constexpr bool bSweep = true;
 	FVector const DeltaLocation(XOffset, 0.0f, 0.0f);
-	AddActorLocalOffset(DeltaLocation);
+	AddActorLocalOffset(DeltaLocation, bSweep);
 }
