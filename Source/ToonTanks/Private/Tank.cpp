@@ -20,8 +20,9 @@ ATank::ATank()
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
+	// axis bindings
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
+	PlayerInputComponent->BindAxis(TEXT("Turn"),		this, &ATank::Turn);
 }
 
 void ATank::Move(float Value)
@@ -30,6 +31,16 @@ void ATank::Move(float Value)
 	double  const XOffset   = Value * DeltaTime * MovementSpeed;
 
 	constexpr bool bSweep = true;
-	FVector const DeltaLocation(XOffset, 0.0f, 0.0f);
+	FVector const DeltaLocation(XOffset, 0.0, 0.0);
 	AddActorLocalOffset(DeltaLocation, bSweep);
+}
+
+void ATank::Turn(float Value)
+{
+	double const DeltaTime = UGameplayStatics::GetWorldDeltaSeconds(this);
+	double const YawOffset = Value * DeltaTime * TurnRate;
+
+	constexpr bool bSweep = true;
+	FRotator const DeltaRotation(0.0, YawOffset, 0.0);
+	AddActorLocalRotation(DeltaRotation, bSweep);
 }

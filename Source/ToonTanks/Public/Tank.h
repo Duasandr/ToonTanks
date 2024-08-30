@@ -23,11 +23,15 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MovementSpeed = 200.0f;
 	
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurnRate = 200.0f;
+
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;	// forward declaration
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;	// forward declaration
 	
-	void Move(float Value);	
+	void Move(float Value);
+	void Turn(float Value);
 };
