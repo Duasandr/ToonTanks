@@ -19,6 +19,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
+protected:
+	void BeginPlay() override;
+
 private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MovementSpeed = 200.0f;
