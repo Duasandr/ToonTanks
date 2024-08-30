@@ -20,7 +20,7 @@ public:
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 private:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MovementSpeed = 200.0f;
 	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
