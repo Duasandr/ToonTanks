@@ -5,6 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "DrawDebugHelpers.h"
 
 ATank::ATank()
 {
@@ -15,6 +16,47 @@ ATank::ATank()
 	// set up attachments
 	SpringArm->SetupAttachment(RootComponent);
 	Camera	 ->SetupAttachment(SpringArm);
+}
+
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerControllerRef = Cast<APlayerController>(GetController());
+}
+
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (PlayerControllerRef)
+	{
+		FHitResult HitResult;
+		constexpr bool bComplexSweep = false;
+		bool const HasHit = PlayerControllerRef->GetHitResultUnderCursor(
+			ECC_Visibility,
+			bComplexSweep,
+			HitResult);
+
+		if (HasHit)
+		{
+			constexpr int32 Segments = 100;
+			constexpr float Radius = 10.0f;
+			constexpr float LifeTime = -1.0f;
+			constexpr bool bPersistentLines = false;
+			
+			DrawDebugSphere(
+				GetWorld(),
+				HitResult.ImpactPoint,
+				Radius,
+				Segments,
+				FColor::Red,
+				bPersistentLines,
+				LifeTime);
+
+			RotateTurret(HitResult.ImpactPoint);
+		}
+	}
 }
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
