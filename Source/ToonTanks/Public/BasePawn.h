@@ -15,6 +15,13 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+protected:
+	/**
+	 * @brief Rotates turret mesh in the world space
+	 * @param LookAtTarget It is assumed it is a world space vector.
+	 */
+	void RotateTurret(FVector const& LookAtTarget) const;
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent * CapsuleComp; // forward declaration
