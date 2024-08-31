@@ -18,6 +18,9 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+	virtual void Tick(float DeltaTime) override;
+protected:
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
@@ -31,6 +34,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;	// forward declaration
+
+	UPROPERTY()
+	APlayerController* PlayerControllerRef;
 	
 	void Move(float Value);
 	void Turn(float Value);
