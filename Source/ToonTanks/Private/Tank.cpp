@@ -54,7 +54,7 @@ void ATank::Tick(float DeltaTime)
 				bPersistentLines,
 				LifeTime);
 
-			RotateTurret(HitResult.ImpactPoint);
+			RotateTurret(HitResult.ImpactPoint, DeltaTime);
 		}
 	}
 }
