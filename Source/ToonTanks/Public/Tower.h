@@ -23,6 +23,9 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	UPROPERTY(EditAnywhere , Category = "Offense")
+	float AreaOffEffectRadius = 100.0f;
+	
 	UPROPERTY()
 	class ATank* Tank;
 };
