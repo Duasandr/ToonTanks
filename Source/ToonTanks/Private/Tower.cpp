@@ -18,12 +18,11 @@ void ATower::Tick(float DeltaTime)
 	{
 		FVector const CurrentLocation = GetActorLocation();
 		FVector const TankLocation    = Tank->GetActorLocation();
-		double  const Distance		  = FVector::Dist(TankLocation, CurrentLocation);
+		double  const Distance		  = FVector::Dist(CurrentLocation, TankLocation);
 
-		if (Distance < AreaOffEffectRadius)
+		if (Distance <= FireRange)
 		{
-			FVector const LookAtTarget = Tank->GetActorLocation();
-			RotateTurret(LookAtTarget, DeltaTime);
+			RotateTurret(TankLocation, DeltaTime);
 		}
 	}
 }
