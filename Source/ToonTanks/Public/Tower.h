@@ -14,4 +14,15 @@ class TOONTANKS_API ATower : public ABasePawn
 {
 	GENERATED_BODY()
 	
+public:
+	ATower();
+	
+	virtual void Tick(float DeltaTime) override;
+	
+protected:
+	virtual void BeginPlay() override;
+
+private:
+	UPROPERTY()
+	class ATank* Tank;
 };
