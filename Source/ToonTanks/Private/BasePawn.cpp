@@ -23,11 +23,21 @@ ABasePawn::ABasePawn()
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
 
-void ABasePawn::RotateTurret(FVector const& LookAtTarget) const
+void ABasePawn::RotateTurret(FVector const& LookAtTarget, float DeltaTime) const
 {
 	FVector  const TurretLocation = TurretMesh->GetComponentLocation();
-	FVector  const ToTarget		  = LookAtTarget - TurretLocation;
-	FRotator const Rotator		  = ToTarget.Rotation();
-	FRotator const LookAtRotator(0.0, Rotator.Yaw, 0.0);
-	TurretMesh->SetWorldRotation(LookAtRotator);
+	FVector  const ToTargetVector = LookAtTarget - TurretLocation;
+
+	FRotator const CurrentRotator = TurretMesh->GetComponentRotation();
+	FRotator const ToTargetRotator= ToTargetVector.Rotation();
+	// we only want the Yaw component, the turret does not tilt.
+	FRotator const Target(0.0, ToTargetRotator.Yaw, 0.0);
+
+	FRotator const NewRotator = FMath::RInterpTo(
+		CurrentRotator,
+		Target,
+		DeltaTime,
+		TurretRotationRate
+	);
+	TurretMesh->SetWorldRotation(NewRotator);
 }
