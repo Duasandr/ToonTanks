@@ -23,8 +23,8 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditAnywhere , Category = "Offense")
-	float AreaOffEffectRadius = 100.0f;
+	UPROPERTY(EditDefaultsOnly , Category = "Combat")
+	float FireRange = 100.0f;
 	
 	UPROPERTY()
 	class ATank* Tank;
