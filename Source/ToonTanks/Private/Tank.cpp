@@ -5,7 +5,6 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "DrawDebugHelpers.h"
 
 ATank::ATank()
 {
@@ -40,20 +39,6 @@ void ATank::Tick(float DeltaTime)
 
 		if (HasHit)
 		{
-			constexpr int32 Segments = 100;
-			constexpr float Radius = 10.0f;
-			constexpr float LifeTime = -1.0f;
-			constexpr bool bPersistentLines = false;
-			
-			DrawDebugSphere(
-				GetWorld(),
-				HitResult.ImpactPoint,
-				Radius,
-				Segments,
-				FColor::Red,
-				bPersistentLines,
-				LifeTime);
-
 			RotateTurret(HitResult.ImpactPoint, DeltaTime);
 		}
 	}
