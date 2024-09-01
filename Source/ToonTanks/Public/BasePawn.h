@@ -19,10 +19,14 @@ protected:
 	/**
 	 * @brief Rotates turret mesh in the world space
 	 * @param LookAtTarget It is assumed it is a world space vector.
+	 * @param DeltaTime Elapsed time in seconds to interpolate the rotation.
 	 */
-	void RotateTurret(FVector const& LookAtTarget) const;
+	void RotateTurret(FVector const& LookAtTarget, float DeltaTime) const;
 
 private:
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurretRotationRate = 5.0f;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent * CapsuleComp; // forward declaration
 	
