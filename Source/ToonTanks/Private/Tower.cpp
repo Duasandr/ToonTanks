@@ -3,6 +3,7 @@
 
 #include "Tower.h"
 #include "Tank.h"
+#include "Kismet/GameplayStatics.h"
 
 ATower::ATower()
 {
@@ -13,13 +14,23 @@ void ATower::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector const LookAtTarget = Tank->GetActorLocation();
-	RotateTurret(LookAtTarget, DeltaTime);
+	if (Tank)
+	{
+		FVector const CurrentLocation = GetActorLocation();
+		FVector const TankLocation    = Tank->GetActorLocation();
+		double  const Distance		  = FVector::Dist(TankLocation, CurrentLocation);
+
+		if (Distance < AreaOffEffectRadius)
+		{
+			FVector const LookAtTarget = Tank->GetActorLocation();
+			RotateTurret(LookAtTarget, DeltaTime);
+		}
+	}
 }
 
 void ATower::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Tank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
 }
