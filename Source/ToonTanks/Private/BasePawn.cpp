@@ -41,3 +41,14 @@ void ABasePawn::RotateTurret(FVector const& LookAtTarget, float DeltaTime) const
 	);
 	TurretMesh->SetWorldRotation(NewRotator);
 }
+
+void ABasePawn::Fire()
+{
+	DrawDebugSphere(
+		GetWorld(),
+		ProjectileSpawnPoint->GetComponentLocation(),
+		10.0,
+		10,
+		FColor::Red,
+		false);
+}
