@@ -23,4 +23,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
+	UStaticMeshComponent* ProjectileMesh;
 };
