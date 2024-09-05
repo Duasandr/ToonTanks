@@ -23,7 +23,7 @@ protected:
 	 */
 	void RotateTurret(FVector const& LookAtTarget, float DeltaTime) const;
 
-	void Fire();
+	void Fire() const;
 
 private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
@@ -40,4 +40,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent * ProjectileSpawnPoint;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	TSubclassOf<class AProjectile> ProjectileClass;	// forward declaration
 };
