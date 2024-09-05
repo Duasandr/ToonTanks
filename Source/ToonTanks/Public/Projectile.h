@@ -22,4 +22,7 @@ protected:
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Components")
 	UStaticMeshComponent* ProjectileMesh;
+
+	UPROPERTY(VisibleAnywhere, Category = "Movement")
+	class UProjectileMovementComponent* ProjectileMovement; // forward declaration
 };
