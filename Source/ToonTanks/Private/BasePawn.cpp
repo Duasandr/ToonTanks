@@ -43,7 +43,7 @@ void ABasePawn::RotateTurret(FVector const& LookAtTarget, float DeltaTime) const
 	TurretMesh->SetWorldRotation(NewRotator);
 }
 
-void ABasePawn::Fire() const
+void ABasePawn::Fire()
 {
 	UWorld* World = GetWorld();
 	if (World)
