@@ -23,7 +23,7 @@ protected:
 	 */
 	void RotateTurret(FVector const& LookAtTarget, float DeltaTime) const;
 
-	void Fire() const;
+	void Fire();
 
 private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
