@@ -38,3 +38,13 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
+void UHealthComponent::DamageTaken(
+	AActor			  *DamagedActor,
+	float			   Damage,
+	UDamageType const *DamageType,
+	AController		  *Instigator,
+	AActor			  *DamageCauser)
+{
+	
+}
+
