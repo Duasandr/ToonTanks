@@ -28,3 +28,16 @@ void AProjectile::BeginPlay()
 
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
+
+void AProjectile::OnHit(
+	UPrimitiveComponent	*HitComp,
+	AActor				*OtherActor,
+	UPrimitiveComponent	*OtherComp,
+	FVector				NormalImpulse,
+	FHitResult const	&Hit)
+{
+	UE_LOG(LogTemp, Warning, TEXT("HitComp : %s\nOtherActor: %s\nOtherComp: %s"),
+		*HitComp->GetName(),
+		*OtherActor->GetName(),
+		*OtherComp->GetName());
+}
