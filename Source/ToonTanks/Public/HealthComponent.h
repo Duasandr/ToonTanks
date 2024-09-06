@@ -23,12 +23,13 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	FORCEINLINE void FullHeal() { Health = MaxHealth; }
 	
 private:
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 1.0f;
 
 	float Health = 0.0f;
+
+	FORCEINLINE void SetHealth(float const NewHealth) { Health = NewHealth; }
+	FORCEINLINE void FullHeal() { SetHealth(MaxHealth); }
 };
