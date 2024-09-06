@@ -20,6 +20,13 @@ void UHealthComponent::BeginPlay()
 	Super::BeginPlay();
 
 	FullHeal();
+
+	// bind functions to damage delegate
+	AActor * Owner = GetOwner();
+	if (Owner)
+	{
+		Owner->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
+	}
 }
 
 
