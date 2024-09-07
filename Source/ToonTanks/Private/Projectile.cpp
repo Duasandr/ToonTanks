@@ -3,6 +3,7 @@
 
 #include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -27,6 +28,12 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+}
+
+bool AProjectile::IsSafeToApplyDamageTo(AActor const * DamagedActor) const
+{
+	auto const * Owner = GetOwner();
+	return Owner && DamagedActor && Owner != DamagedActor && DamagedActor != this;
 }
 
 void AProjectile::OnHit(
