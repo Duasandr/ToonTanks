@@ -45,6 +45,10 @@ void UHealthComponent::DamageTaken(
 	AController		  *Instigator,
 	AActor			  *DamageCauser)
 {
-	
+	if (Damage > 0.0f)
+	{
+		Health -= Damage;
+		UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+	}
 }
 
