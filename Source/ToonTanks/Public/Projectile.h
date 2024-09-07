@@ -26,6 +26,17 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	class UProjectileMovementComponent* ProjectileMovement; // forward declaration
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float Damage = .5f;
+
+	/**
+	 * @brief Checks if it is safe to apply damage to @b DamagedActor
+	 * @param DamagedActor The actor to apply the damage
+	 * @return It will return true if @c this has a valid owner, @b DamagedActor is valid and not @c this or the owner.
+	 * No friendly fire.  
+	 */
+	bool IsSafeToApplyDamageTo(AActor const* DamagedActor) const;
+	
 	/**
 	 * @brief Callback that is bound to the multicast object managing hit events.
 	 * @param HitComp		The component that hit (@c this)
@@ -44,7 +55,4 @@ private:
 		UPrimitiveComponent * OtherComp,
 		FVector				NormalImpulse,
 		FHitResult const	& Hit);
-
-	UPROPERTY(EditAnywhere, Category = "Combat")
-	float Damage = .5f;
 };
