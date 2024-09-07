@@ -43,8 +43,12 @@ void AProjectile::OnHit(
 	FVector				NormalImpulse,
 	FHitResult const	&Hit)
 {
-	UE_LOG(LogTemp, Warning, TEXT("HitComp : %s\nOtherActor: %s\nOtherComp: %s"),
-		*HitComp->GetName(),
-		*OtherActor->GetName(),
-		*OtherComp->GetName());
+	if (IsSafeToApplyDamageTo(OtherActor))
+	{
+		auto * Instigator = GetOwner()->GetInstigatorController();
+		auto * DamageType = UDamageType::StaticClass();
+		UGameplayStatics::ApplyDamage(OtherActor, Damage, Instigator, this, DamageType);
+
+		Destroy();
+	}
 }
