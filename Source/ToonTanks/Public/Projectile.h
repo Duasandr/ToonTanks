@@ -44,4 +44,7 @@ private:
 		UPrimitiveComponent * OtherComp,
 		FVector				NormalImpulse,
 		FHitResult const	& Hit);
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float Damage = .5f;
 };
