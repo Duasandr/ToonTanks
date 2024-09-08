@@ -16,4 +16,8 @@ class TOONTANKS_API AToonTanksGameMode : public AGameModeBase
 
 public:
 	void ActorDied(AActor* DeadActor);
+
+private:
+	UPROPERTY()
+	class ATank* Tank; // forward declaration
 };
