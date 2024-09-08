@@ -48,10 +48,12 @@ void UHealthComponent::DamageTaken(
 	AController		  *Instigator,
 	AActor			  *DamageCauser)
 {
-	if (Damage > 0.0f)
+	if (Damage <= 0.0f) return;
+
+	Health -= Damage;
+
+	if (Health <= 0.0f && GameMode)
 	{
-		Health -= Damage;
-		UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+		GameMode->ActorDied(DamagedActor);
 	}
 }
-
