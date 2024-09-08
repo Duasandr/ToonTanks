@@ -45,6 +45,9 @@ private:
 
 	float Health = 0.0f;
 
+	UPROPERTY()
+	class AToonTanksGameMode * GameMode;
+
 	FORCEINLINE void SetHealth(float const NewHealth) { Health = NewHealth; }
 	FORCEINLINE void FullHeal() { SetHealth(MaxHealth); }
 };
