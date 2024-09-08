@@ -7,3 +7,10 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 {
 	
 }
+
+void AToonTanksGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
+}
