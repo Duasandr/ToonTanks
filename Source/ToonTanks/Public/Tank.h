@@ -21,6 +21,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void HandleDestruction();
+
+	FORCEINLINE APlayerController* GetPlayerController() const { return TankPlayerController; }
 	
 protected:
 	virtual void BeginPlay() override;
