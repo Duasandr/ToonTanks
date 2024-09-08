@@ -39,7 +39,7 @@ private:
 	class UCameraComponent* Camera;	// forward declaration
 
 	UPROPERTY()
-	APlayerController* PlayerControllerRef;
+	APlayerController* TankPlayerController;
 	
 	void Move(float Value);
 	void Turn(float Value);
