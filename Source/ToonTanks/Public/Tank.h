@@ -19,6 +19,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void Tick(float DeltaTime) override;
+
+	void HandleDestruction();
+	
 protected:
 	virtual void BeginPlay() override;
 
