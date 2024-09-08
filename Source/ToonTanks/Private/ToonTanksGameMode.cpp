@@ -3,3 +3,7 @@
 
 #include "ToonTanksGameMode.h"
 
+void AToonTanksGameMode::ActorDied(AActor* DeadActor)
+{
+	
+}
