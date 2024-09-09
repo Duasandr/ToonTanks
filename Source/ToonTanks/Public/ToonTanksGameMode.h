@@ -20,6 +20,9 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameStart();
+
 private:
 	float StartDelay = 5.0f;
 	
