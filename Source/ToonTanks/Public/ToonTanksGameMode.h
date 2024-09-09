@@ -21,6 +21,14 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	
+	// Forward declarations
+	
 	UPROPERTY()
-	class ATank* Tank; // forward declaration
+	class ATank* Tank;
+	
+	UPROPERTY()
+	class AToonTanksPlayerController* ToonTanksPlayerController;
+
+	// end forward declarations
 };
