@@ -19,6 +19,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void Tick(float DeltaTime) override;
+
+	void HandleDestruction();
+
+	FORCEINLINE APlayerController* GetPlayerController() const { return TankPlayerController; }
+	
 protected:
 	virtual void BeginPlay() override;
 
@@ -36,7 +41,7 @@ private:
 	class UCameraComponent* Camera;	// forward declaration
 
 	UPROPERTY()
-	APlayerController* PlayerControllerRef;
+	APlayerController* TankPlayerController;
 	
 	void Move(float Value);
 	void Turn(float Value);

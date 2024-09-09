@@ -21,18 +21,18 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	TankPlayerController = Cast<APlayerController>(GetController());
 }
 
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PlayerControllerRef)
+	if (TankPlayerController)
 	{
 		FHitResult HitResult;
 		constexpr bool bComplexSweep = false;
-		bool const HasHit = PlayerControllerRef->GetHitResultUnderCursor(
+		bool const HasHit = TankPlayerController->GetHitResultUnderCursor(
 			ECC_Visibility,
 			bComplexSweep,
 			HitResult);
@@ -42,6 +42,13 @@ void ATank::Tick(float DeltaTime)
 			RotateTurret(HitResult.ImpactPoint, DeltaTime);
 		}
 	}
+}
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
 }
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
