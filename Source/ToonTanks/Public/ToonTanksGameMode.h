@@ -21,6 +21,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	float StartDelay = 5.0f;
 	
 	// Forward declarations
 	
@@ -31,4 +32,6 @@ private:
 	class AToonTanksPlayerController* ToonTanksPlayerController;
 
 	// end forward declarations
+
+	void HandleGameStart();
 };
