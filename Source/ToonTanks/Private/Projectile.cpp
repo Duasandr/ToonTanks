@@ -43,6 +43,11 @@ void AProjectile::OnHit(
 	FVector				NormalImpulse,
 	FHitResult const	&Hit)
 {
+	UGameplayStatics::SpawnEmitterAtLocation(
+		this,
+		HitParticle,
+		Hit.ImpactPoint,
+		GetActorRotation());
 	if (IsSafeToApplyDamageTo(OtherActor))
 	{
 		auto * Instigator = GetOwner()->GetInstigatorController();
