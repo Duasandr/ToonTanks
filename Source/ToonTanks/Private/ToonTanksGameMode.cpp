@@ -16,6 +16,8 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 		{
 			ToonTanksPlayerController->SetPlayerEnabledState(false);
 		}
+		
+		GameOver(false);
 	}
 	else if (auto * Tower = Cast<ATower>(DeadActor))
 	{
