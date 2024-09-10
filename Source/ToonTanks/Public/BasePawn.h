@@ -45,4 +45,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;	// forward declaration
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem * DeathParticle;
 };
