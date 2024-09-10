@@ -43,16 +43,25 @@ void AProjectile::OnHit(
 	FVector				NormalImpulse,
 	FHitResult const	&Hit)
 {
-	UGameplayStatics::SpawnEmitterAtLocation(
-		this,
-		HitParticle,
-		GetActorLocation(),
-		GetActorRotation());
 	if (IsSafeToApplyDamageTo(OtherActor))
 	{
 		auto * Instigator = GetOwner()->GetInstigatorController();
 		auto * DamageType = UDamageType::StaticClass();
-		UGameplayStatics::ApplyDamage(OtherActor, Damage, Instigator, this, DamageType);
+		UGameplayStatics::ApplyDamage(
+			OtherActor,
+			Damage,
+			Instigator,
+			this,
+			DamageType);
+
+		if (HitParticle)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(
+				this,
+				HitParticle,
+				GetActorLocation(),
+				GetActorRotation());
+		}
 	}
 	Destroy();	
 }
