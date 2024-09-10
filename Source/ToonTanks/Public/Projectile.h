@@ -27,6 +27,9 @@ private:
 	class UProjectileMovementComponent* ProjectileMovement; // forward declaration
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem * HitParticle;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
 	float Damage = .5f;
 
 	/**
