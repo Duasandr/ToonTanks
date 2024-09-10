@@ -46,7 +46,7 @@ void AProjectile::OnHit(
 	UGameplayStatics::SpawnEmitterAtLocation(
 		this,
 		HitParticle,
-		Hit.ImpactPoint,
+		GetActorLocation(),
 		GetActorRotation());
 	if (IsSafeToApplyDamageTo(OtherActor))
 	{
