@@ -3,6 +3,7 @@
 
 #include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Particles/ParticleSystemComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -12,10 +13,13 @@ AProjectile::AProjectile()
 	PrimaryActorTick.bCanEverTick = false;
 
 	// allocate memory for components
-	ProjectileMesh     = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
-	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
-	
+	ProjectileMesh				= CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
+	ProjectileMovement			= CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
+	SmokeTrailParticleComponent = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Smoke Trail"));
+
+	// component assignments
 	RootComponent = ProjectileMesh;
+	SmokeTrailParticleComponent->SetupAttachment(RootComponent);
 
 	// component defaults
 	ProjectileMovement->InitialSpeed = 2000.0f;
