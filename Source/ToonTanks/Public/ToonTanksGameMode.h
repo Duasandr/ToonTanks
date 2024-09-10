@@ -28,6 +28,8 @@ protected:
 
 private:
 	float StartDelay = 5.0f;
+
+	int32 TargetTowerCount = 0;
 	
 	// Forward declarations
 	
@@ -40,4 +42,6 @@ private:
 	// end forward declarations
 
 	void HandleGameStart();
+
+	int32 GetTargetTowerCount() const;
 };
