@@ -81,6 +81,13 @@ void AProjectile::OnHit(
 			HitSound,
 			GetActorLocation());
 	}
-	
+	if (HitCameraShakeClass)
+	{
+		if (GetWorld() && GetWorld()->GetFirstPlayerController())
+		{
+			GetWorld()->GetFirstPlayerController()
+					  ->ClientStartCameraShake(HitCameraShakeClass);	
+		}
+	}
 	Destroy();	
 }
