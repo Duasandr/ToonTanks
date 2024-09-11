@@ -40,6 +40,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<UCameraShakeBase> HitCameraShakeClass;
 	
 	/**
 	 * @brief Checks if it is safe to apply damage to @b DamagedActor
