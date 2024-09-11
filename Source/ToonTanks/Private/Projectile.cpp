@@ -32,6 +32,14 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+
+	if (LaunchSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			LaunchSound,
+			GetActorLocation());
+	}
 }
 
 bool AProjectile::IsSafeToApplyDamageTo(AActor const * DamagedActor) const
@@ -57,15 +65,22 @@ void AProjectile::OnHit(
 			Instigator,
 			this,
 			DamageType);
-
-		if (HitParticle)
-		{
-			UGameplayStatics::SpawnEmitterAtLocation(
-				this,
-				HitParticle,
-				GetActorLocation(),
-				GetActorRotation());
-		}
 	}
+	if (HitParticle)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(
+			this,
+			HitParticle,
+			GetActorLocation(),
+			GetActorRotation());
+	}
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this,
+			HitSound,
+			GetActorLocation());
+	}
+	
 	Destroy();	
 }
