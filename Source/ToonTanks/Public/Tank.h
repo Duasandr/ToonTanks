@@ -23,6 +23,8 @@ public:
 	void HandleDestruction();
 
 	FORCEINLINE APlayerController* GetPlayerController() const { return TankPlayerController; }
+
+	bool bIsAlive;
 	
 protected:
 	virtual void BeginPlay() override;

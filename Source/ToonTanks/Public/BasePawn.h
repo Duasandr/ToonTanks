@@ -45,4 +45,13 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;	// forward declaration
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem * DeathParticle;
+	
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase * DeathSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<UCameraShakeBase> DeathCameraShakeClass;
 };

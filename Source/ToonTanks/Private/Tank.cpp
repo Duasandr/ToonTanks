@@ -22,6 +22,7 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 
 	TankPlayerController = Cast<APlayerController>(GetController());
+	bIsAlive = true;
 }
 
 void ATank::Tick(float DeltaTime)
@@ -49,6 +50,7 @@ void ATank::HandleDestruction()
 	Super::HandleDestruction();
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
+	bIsAlive = false;
 }
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

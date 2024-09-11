@@ -27,8 +27,23 @@ private:
 	class UProjectileMovementComponent* ProjectileMovement; // forward declaration
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem * HitParticle;
+
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	UParticleSystemComponent * SmokeTrailParticleComponent;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
 	float Damage = .5f;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* HitSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<UCameraShakeBase> HitCameraShakeClass;
+	
 	/**
 	 * @brief Checks if it is safe to apply damage to @b DamagedActor
 	 * @param DamagedActor The actor to apply the damage

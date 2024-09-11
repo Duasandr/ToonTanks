@@ -16,10 +16,18 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 		{
 			ToonTanksPlayerController->SetPlayerEnabledState(false);
 		}
+		
+		GameOver(false);
 	}
-	else if (auto * Tower = Cast<ATower>(DeadActor))
+	else if (ATower * Tower = Cast<ATower>(DeadActor))
 	{
-		Tower->HandleDestruction();	
+		Tower->HandleDestruction();
+		--TargetTowerCount;
+		
+		if (TargetTowerCount == 0)
+		{
+			GameOver(true);
+		}
 	}
 }
 
@@ -32,10 +40,11 @@ void AToonTanksGameMode::BeginPlay()
 
 void AToonTanksGameMode::HandleGameStart()
 {
-	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
+	Tank					  = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
 	ToonTanksPlayerController = Cast<AToonTanksPlayerController>(
 		UGameplayStatics::GetPlayerController(this, 0)
 		);
+	TargetTowerCount = GetTargetTowerCount();
 
 	GameStart();
 
@@ -57,4 +66,11 @@ void AToonTanksGameMode::HandleGameStart()
 			false
 			);
 	}
+}
+
+int32 AToonTanksGameMode::GetTargetTowerCount() const
+{
+	TArray< AActor * > Towers;
+	UGameplayStatics::GetAllActorsOfClass(this, ATower::StaticClass(), Towers);
+	return Towers.Num();
 }
