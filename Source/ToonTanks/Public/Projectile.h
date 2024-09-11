@@ -35,6 +35,12 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float Damage = .5f;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* HitSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* LaunchSound;
+	
 	/**
 	 * @brief Checks if it is safe to apply damage to @b DamagedActor
 	 * @param DamagedActor The actor to apply the damage
