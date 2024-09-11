@@ -44,7 +44,7 @@ void AProjectile::BeginPlay()
 
 bool AProjectile::IsSafeToApplyDamageTo(AActor const * DamagedActor) const
 {
-	auto const * Owner = GetOwner();
+	AActor const * Owner = GetOwner();
 	return Owner && DamagedActor && Owner != DamagedActor && DamagedActor != this;
 }
 
